@@ -6,6 +6,7 @@ import com.kata.mower.entities.Orientation;
 import com.kata.mower.entities.Position;
 import com.kata.mower.entities.Bounds;
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Setter
 public class InputFileDataParser implements DataParser {
-    private final List<String> lines;
+    private List<String> lines;
     private final String SPACE_SEPARATOR = " ";
 
     @Override

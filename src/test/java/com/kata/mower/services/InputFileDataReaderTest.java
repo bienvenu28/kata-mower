@@ -3,7 +3,6 @@ package com.kata.mower.services;
 import com.kata.mower.exceptions.InvalidFileException;
 import com.kata.mower.services.formatters.LineFormatter;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 

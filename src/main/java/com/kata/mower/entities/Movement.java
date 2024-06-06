@@ -4,12 +4,14 @@ import lombok.Getter;
 
 @Getter
 public enum Movement {
-    A('A'),
-    D('D'),
-    G('G');
+    A(0, 'A'),
+    D(1, 'D'),
+    G(-1, 'G');
     private final char letterAsChar;
+    private final int value;
 
-    Movement(char letterAsChar) {
+    Movement(int value, char letterAsChar) {
+        this.value = value;
         this.letterAsChar = letterAsChar;
     }
 }

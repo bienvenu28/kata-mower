@@ -2,8 +2,10 @@ package com.kata.mower.services;
 
 import com.kata.mower.exceptions.InvalidFileException;
 import com.kata.mower.services.formatters.Formatter;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 
 import java.io.IOException;
@@ -13,10 +15,17 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Slf4j
-@AllArgsConstructor
+@Service
 public class InputFileDataReader implements DataReader {
+
     private final String fileName;
     private final Formatter lineFormatter;
+
+    @Autowired
+    public InputFileDataReader(@Value("${input.file.path}")String fileName, Formatter lineFormatter) {
+        this.lineFormatter = lineFormatter;
+        this.fileName = fileName;
+    }
 
     @Override
     public List<String> readLines() throws InvalidFileException {

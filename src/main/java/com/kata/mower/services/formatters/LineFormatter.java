@@ -1,6 +1,8 @@
 package com.kata.mower.services.formatters;
 
+import org.springframework.stereotype.Service;
 
+@Service
 public class LineFormatter implements Formatter {
     @Override
     public String format(String s) {

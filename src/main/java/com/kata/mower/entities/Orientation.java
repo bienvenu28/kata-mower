@@ -1,23 +1,20 @@
 package com.kata.mower.entities;
 
 public enum Orientation {
-    N,
-    E,
-    W,
-    S;
+    N(0),
+    E(1),
+    S(2),
+    W(3);
+
+    private final int value;
+
+    Orientation(int value) {
+        this.value = value;
+    }
+
     public static Orientation getNewOrientation(Orientation currentOrientation, Movement movement) {
-        if (movement.equals(Movement.D))
-            return switch (currentOrientation) {
-              case N -> E;
-              case E -> S;
-              case S -> W;
-              case W -> N;
-            };
-        return switch (currentOrientation) {
-            case N -> W;
-            case W -> S;
-            case S -> E;
-            case E -> N;
-        };
+        var orientationsArray = Orientation.values();
+        var newOrientationIndex = Math.floorMod(currentOrientation.value + movement.getValue(), orientationsArray.length);
+        return orientationsArray[newOrientationIndex];
     }
 }

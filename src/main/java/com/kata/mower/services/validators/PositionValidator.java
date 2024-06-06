@@ -1,10 +1,14 @@
 package com.kata.mower.services.validators;
 
 import com.kata.mower.exceptions.InvalidDataFormatException;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
+@Service
+@Order(2)
 public class PositionValidator extends AbstractValidator {
     @Override
     public boolean isValid(String s) {

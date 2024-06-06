@@ -1,5 +1,6 @@
 package com.kata.mower.entities;
 
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ConvertWith;

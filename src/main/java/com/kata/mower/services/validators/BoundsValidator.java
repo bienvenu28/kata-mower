@@ -2,11 +2,15 @@ package com.kata.mower.services.validators;
 
 import com.kata.mower.exceptions.InvalidDataFormatException;
 import lombok.Setter;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 @Setter
+@Service
+@Order(1)
 public class BoundsValidator extends AbstractValidator {
 
     @Override
