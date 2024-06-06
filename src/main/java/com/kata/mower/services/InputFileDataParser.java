@@ -6,13 +6,13 @@ import com.kata.mower.entities.Orientation;
 import com.kata.mower.entities.Position;
 import com.kata.mower.entities.Bounds;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 @AllArgsConstructor
 public class InputFileDataParser implements DataParser {
     private final List<String> lines;
@@ -44,7 +44,7 @@ public class InputFileDataParser implements DataParser {
         var remainingLines = lines.subList(startIndex, lines.size());
         var iterator = remainingLines.iterator();
         var instructions = new ArrayList<Instruction>();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             var position = parsePosition(iterator.next());
             var sequence = iterator.next();
             instructions.add(new Instruction(position, sequence));

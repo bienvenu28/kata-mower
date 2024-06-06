@@ -23,25 +23,24 @@ public class FileProcessorRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         try {
-            log.info("Start processing file {}", inputFilePath);
-            log.info("############ Reading data ############");
+            log.info("############ STEP 1 Read data ############");
             var formatter = new LineFormatter();
             var dataReader = new InputFileDataReader(inputFilePath, formatter);
             var lines = dataReader.readLines();
-            log.info("############ Validating lines ############");
+            log.info("############ STEP 2 Validate lines ############");
             var validationChain = new ValidationChain();
             validationChain.addValidator(new BoundsValidator());
             validationChain.addValidator(new PositionValidator());
             validationChain.addValidator(new SequenceValidator());
             validationChain.validate(lines);
-            log.info("############ Parsing lines ############");
+            log.info("############ STEP 3 Parse lines ############");
             var dataParser = new InputFileDataParser(lines);
             var instructions = dataParser.parseLines();
             var bounds = dataParser.parseBounds().orElseThrow();
-            log.info("############ Moving mowers ############");
+            log.info("############ STEP 4 Process lines ############");
             var mowerManager = new MowerManager();
             mowerManager.moveMowers(instructions, bounds);
-            log.info("############ Printing mowers position ############");
+            log.info("############ STEP 5 Printing mowers position ############");
             mowerManager.getMowers().forEach(mower -> log.info(mower.toString()));
         } catch (InvalidFileException e) {
             log.error("An error occurs {}", e.getMessage());

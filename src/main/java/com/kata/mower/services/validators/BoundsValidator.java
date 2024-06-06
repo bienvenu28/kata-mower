@@ -1,12 +1,11 @@
 package com.kata.mower.services.validators;
 
 import com.kata.mower.exceptions.InvalidDataFormatException;
-import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
 
-@Setter
+
 public class BoundsValidator extends AbstractValidator {
 
     @Override
